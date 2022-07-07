@@ -19,4 +19,17 @@ carsRouter.post(
   carController.create,
 );
 
+carsRouter.post(
+  '/search',
+  celebrate({
+    [Segments.BODY]: {
+      search: Joi.alternatives(
+        Joi.string().required(),
+        Joi.number().required(),
+      ),
+    },
+  }),
+  carController.query,
+);
+
 export default carsRouter;
