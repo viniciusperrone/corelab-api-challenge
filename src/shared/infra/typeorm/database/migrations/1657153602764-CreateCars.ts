@@ -34,6 +34,14 @@ export class CreateCars1657153602764 implements MigrationInterface {
             name: 'plate',
             type: 'varchar(255)',
           },
+          {
+            name: 'plice',
+            type: 'float',
+          },
+          {
+            name: 'description',
+            type: 'varchar(255)',
+          },
         ],
       }),
     );

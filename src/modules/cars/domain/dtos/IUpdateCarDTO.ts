@@ -5,4 +5,6 @@ export interface IUpdateCarDTO {
   color: string;
   year: number;
   plate: string;
+  price: number;
+  description: string;
 }

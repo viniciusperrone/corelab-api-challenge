@@ -19,6 +19,12 @@ class Car {
 
   @Column()
   plate: string;
+
+  @Column()
+  price: number;
+
+  @Column()
+  description: string;
 }
 
 export { Car };

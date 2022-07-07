@@ -1,7 +1,7 @@
 import { injectable as Injectable, inject as Inject } from 'tsyringe';
-import { IUpdateCarDTO } from '../domain/dtos/IUpdateCarDTO';
-import ICarsRepository from '../domain/repositories/ICarsRepository';
 import { Car } from '../infra/typeorm/entities/Car';
+import ICarsRepository from '../domain/repositories/ICarsRepository';
+import { IUpdateCarDTO } from '../domain/dtos/IUpdateCarDTO';
 
 @Injectable()
 class UpdateCarService {
@@ -17,6 +17,8 @@ class UpdateCarService {
     color,
     year,
     plate,
+    price,
+    description,
   }: IUpdateCarDTO): Promise<Car | null> {
     const car = await this.carsReporitory.findById(id);
 
@@ -29,6 +31,8 @@ class UpdateCarService {
     car.color = color;
     car.year = year;
     car.plate = plate;
+    car.price = price;
+    car.description = description;
 
     await this.carsReporitory.save(car);
 

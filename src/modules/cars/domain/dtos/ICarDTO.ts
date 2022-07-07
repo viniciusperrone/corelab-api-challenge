@@ -4,4 +4,6 @@ export interface ICarDTO {
   color: string;
   year: number;
   plate: string;
+  price: number;
+  description: string;
 }

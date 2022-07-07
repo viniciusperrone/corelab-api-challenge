@@ -1,7 +1,7 @@
 import { injectable as Injectable, inject as Inject } from 'tsyringe';
-import ICreateCarDTO from '../domain/dtos/ICreateCarDTO';
-import ICarsRepository from '../domain/repositories/ICarsRepository';
 import { Car } from '../infra/typeorm/entities/Car';
+import ICarsRepository from '../domain/repositories/ICarsRepository';
+import { ICreateCarDTO } from '../domain/dtos/ICreateCarDTO';
 
 @Injectable()
 class CreateCarService {

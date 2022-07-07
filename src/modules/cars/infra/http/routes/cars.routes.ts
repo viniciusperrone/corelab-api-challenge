@@ -14,6 +14,8 @@ carsRouter.post(
       color: Joi.string().required(),
       year: Joi.number().required(),
       plate: Joi.string().required(),
+      price: Joi.number().required(),
+      description: Joi.string().required(),
     },
   }),
   carController.create,
@@ -41,6 +43,8 @@ carsRouter.put(
       color: Joi.string().required(),
       year: Joi.number().required(),
       plate: Joi.string().required(),
+      price: Joi.number().required(),
+      description: Joi.string().required(),
     },
     [Segments.PARAMS]: {
       id: Joi.string().required(),
