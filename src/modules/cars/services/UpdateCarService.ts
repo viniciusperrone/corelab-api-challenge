@@ -2,6 +2,7 @@ import { injectable as Injectable, inject as Inject } from 'tsyringe';
 import { Car } from '../infra/typeorm/entities/Car';
 import ICarsRepository from '../domain/repositories/ICarsRepository';
 import { IUpdateCarDTO } from '../domain/dtos/IUpdateCarDTO';
+import { AppError } from '@shared/errors/AppError';
 
 @Injectable()
 class UpdateCarService {
@@ -23,7 +24,7 @@ class UpdateCarService {
     const car = await this.carsReporitory.findById(id);
 
     if (!car) {
-      return null;
+      throw new AppError('Car does not exist!', 401);
     }
 
     car.name = name;

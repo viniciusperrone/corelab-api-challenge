@@ -35,7 +35,7 @@ export class CreateCars1657153602764 implements MigrationInterface {
             type: 'varchar(255)',
           },
           {
-            name: 'plice',
+            name: 'price',
             type: 'float',
           },
           {
