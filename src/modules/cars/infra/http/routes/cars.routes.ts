@@ -32,4 +32,21 @@ carsRouter.post(
   carController.query,
 );
 
+carsRouter.put(
+  '/update/:id',
+  celebrate({
+    [Segments.BODY]: {
+      name: Joi.string().required(),
+      brand: Joi.string().required(),
+      color: Joi.string().required(),
+      year: Joi.number().required(),
+      plate: Joi.string().required(),
+    },
+    [Segments.PARAMS]: {
+      id: Joi.string().required(),
+    },
+  }),
+  carController.update,
+);
+
 export default carsRouter;

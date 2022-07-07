@@ -3,7 +3,7 @@ import dotenv from 'dotenv';
 import { dataSource } from '@shared/infra/typeorm/database';
 import { Car } from '../entities/Car';
 import ICarsRepository from '@modules/cars/domain/repositories/ICarsRepository';
-import ICreateCarDTO from '@modules/cars/domain/dtos/ICreateCarDTO';
+import { ICreateCarDTO } from '@modules/cars/domain/dtos/ICreateCarDTO';
 import { ISearchCarsDTO } from '@modules/cars/domain/dtos/ISearchCarsDTO';
 
 dotenv.config();
@@ -15,14 +15,12 @@ class CarsRepository implements ICarsRepository {
     this.databaseRepository = dataSource.getRepository(Car);
   }
 
-  public async create(carData: ICreateCarDTO): Promise<Car> {
-    const car = this.databaseRepository.create(carData);
-
-    await this.databaseRepository.save(car);
+  public async findById(id: string): Promise<Car | null> {
+    const car = await this.databaseRepository.findOne({ where: { id } });
 
     return car;
   }
-  // save(car: Car): Promise<Car> {}
+
   public async findCarByWord({ search }: ISearchCarsDTO): Promise<Car[]> {
     if (typeof search !== 'number') {
       const cars = (await this.databaseRepository.query(
@@ -37,6 +35,20 @@ class CarsRepository implements ICarsRepository {
 
       return cars;
     }
+  }
+
+  public async create(carData: ICreateCarDTO): Promise<Car> {
+    const car = this.databaseRepository.create(carData);
+
+    await this.databaseRepository.save(car);
+
+    return car;
+  }
+
+  public async save(car: Car): Promise<Car> {
+    await this.databaseRepository.save(car);
+
+    return car;
   }
 }
 

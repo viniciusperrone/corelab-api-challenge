@@ -1,4 +1,5 @@
-export interface ICreateCarDTO {
+export interface IUpdateCarDTO {
+  id: string;
   name: string;
   brand: string;
   color: string;
