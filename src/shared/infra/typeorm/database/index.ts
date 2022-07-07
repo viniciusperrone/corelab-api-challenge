@@ -1,5 +1,6 @@
 import { DataSource } from 'typeorm';
 import dotenv from 'dotenv';
+import { CreateCars } from './migrations';
 
 dotenv.config();
 
@@ -11,4 +12,5 @@ export const dataSource = new DataSource({
   username: process.env.TYPEORM_USERNAME,
   password: process.env.TYPEORM_PASSWORD,
   database: process.env.TYPEORM_DATABASE,
+  migrations: [CreateCars],
 });
