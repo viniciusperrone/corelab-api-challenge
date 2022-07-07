@@ -4,6 +4,7 @@ import { errors } from 'celebrate';
 import cors from 'cors';
 import { dataSource } from '../typeorm/database';
 import routes from './routes';
+import '@shared/container';
 
 const app = express();
 

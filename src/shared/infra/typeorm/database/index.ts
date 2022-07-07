@@ -1,6 +1,7 @@
 import { DataSource } from 'typeorm';
 import dotenv from 'dotenv';
 import { CreateCars } from './migrations';
+import { Car } from '@modules/cars/infra/typeorm/entities/Car';
 
 dotenv.config();
 
@@ -13,4 +14,5 @@ export const dataSource = new DataSource({
   password: process.env.TYPEORM_PASSWORD,
   database: process.env.TYPEORM_DATABASE,
   migrations: [CreateCars],
+  entities: [Car],
 });
